@@ -2,7 +2,7 @@ from openai import OpenAI
 import sqlite3
 import re
 import requests
-
+import os
 TOKEN = os.environment['TOKEN']                            # Вставляем свои токены от бота и от чат гпт
 client = OpenAI(api_key=os.environment['api_key'])
 
