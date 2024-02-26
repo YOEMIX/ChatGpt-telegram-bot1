@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types,executor
 from aiogram.types import Message
 from ChatGPT import gpt
 
-TOKEN = ''
+TOKEN = os.environment['TOKEN']
 bot = Bot(TOKEN)            
 dp = Dispatcher(bot)
 
