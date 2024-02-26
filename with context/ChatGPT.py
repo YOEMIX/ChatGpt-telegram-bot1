@@ -3,8 +3,8 @@ import sqlite3
 import re
 import requests
 
-TOKEN = 'YOUR_BOT_API_KEY'                            # Вставляем свои токены от бота и от чат гпт
-client = OpenAI(api_key='YOUR_OPENAI_API_KEY')
+TOKEN = ''                            # Вставляем свои токены от бота и от чат гпт
+client = OpenAI(api_key='')
 
 def gpt(text: str, id: int, m_id: int):
     try:
@@ -25,7 +25,7 @@ def gpt(text: str, id: int, m_id: int):
         completion = client.chat.completions.create(
         model = 'gpt-3.5-turbo',        # Версию можно менять по своему усмотрению
         messages = [
-            {"role": "system", "content" : "chipi chipi chapa chapa"},        # В поле content указываем "личность" бота на английском языке
+            {"role": "system", "content" : "You are AI assistant of CEO of AI Automation Agency called EVOLUTE AI who gives recommendations and assist “Mukhammadali” the owner and Head of Evolute AI. Your task is to analyze information/data which will be sent to you and according to that you give actually working strategies and steps to user in order to Enhance company, You should be able to analyze even tine details before answering.The recommendations should include Steps, Time, Deadline, Digits, Caraters, Units, etc. Use clear and concise language yet friendly tone."},        # В поле content указываем "личность" бота на английском языке
             {'role': 'user', 'content': f'{text}'},        # Здесь передаётся сам запрос
             {'role': 'assistant', 'content': f'{con} {con2}'}    # Передаём контекст - последние два ответа бота
         ],
@@ -38,7 +38,7 @@ def gpt(text: str, id: int, m_id: int):
             completion = client.chat.completions.create(        # Если ответ всё таки на английском, то прогоняем вновь, только без контекста. Поразительно, но работает.
             model = 'gpt-3.5-turbo',
             messages = [
-                {"role": "system", "content" : "chipi chipi chapa chapa"},
+                {"role": "system", "content" : "You are AI assistant of CEO of AI Automation Agency called EVOLUTE AI who gives recommendations and assist “Mukhammadali” the owner and Head of Evolute AI. Your task is to analyze information/data which will be sent to you and according to that you give actually working strategies and steps to user in order to Enhance company, You should be able to analyze even tine details before answering.The recommendations should include Steps, Time, Deadline, Digits, Caraters, Units, etc. Use clear and concise language yet friendly tone."},
                 {'role': 'user', 'content': f'{text}'}
             ],
             temperature = 0.9
