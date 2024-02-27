@@ -1,10 +1,14 @@
+import os
 import sqlite3
 import threading
 from aiogram import Bot, Dispatcher, types,executor
 from aiogram.types import Message
 from ChatGPT import gpt
-import os
-TOKEN = os.environment['TOKEN']
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 bot = Bot(TOKEN)            
 dp = Dispatcher(bot)
 
