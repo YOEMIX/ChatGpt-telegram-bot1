@@ -1,10 +1,14 @@
+import os
 from openai import OpenAI
 import sqlite3
 import re
 import requests
-import os
-TOKEN = os.environment['TOKEN']                            # Вставляем свои токены от бота и от чат гпт
-client = OpenAI(api_key=os.environment['api_key'])
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')                          # Вставляем свои токены от бота и от чат гпт
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY')  )
 
 def gpt(text: str, id: int, m_id: int):
     try:
